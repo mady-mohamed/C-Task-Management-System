@@ -43,10 +43,10 @@ class Employee {
 };
 
 class Manager : public Employee {
-    private:
-        list<Task> tasksAssigned;
     public:
-        Manager(int employeeId, string employeeTitle, string employeeName) : Employee(employeeId, employeeTitle, employeeName) {}
+        Manager(int employeeId, string employeeTitle, string employeeName) 
+            : Employee(employeeId, employeeTitle, employeeName) {
+        }
 };
 
 int main() {
