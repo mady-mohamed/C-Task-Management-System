@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Employee.h"
+#include "Manager.h"
 using namespace std;
 
 #ifndef TASK_H
