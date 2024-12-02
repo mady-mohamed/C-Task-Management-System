@@ -1,10 +1,11 @@
+#ifndef TASK_H
+#define TASK_H
+
 #include <iostream>
-#include "Employee.h"
 #include "Manager.h"
 using namespace std;
 
-#ifndef TASK_H
-#define TASK_H
+class Employee; // Forward declaration
 
 class Task {
     private:

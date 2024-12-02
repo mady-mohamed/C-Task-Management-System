@@ -6,6 +6,8 @@ using namespace std;
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 
+class Task;
+
 class Employee {
     protected:
         int id;
