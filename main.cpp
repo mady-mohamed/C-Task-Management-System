@@ -96,7 +96,7 @@ int main() {
                 cin >> taskAssigneeId;
                 Employee* taskAssignee = &employees[taskAssigneeId];
                 tasks[taskId] = Task(taskId, taskDescription, taskPriority, taskAssignee, taskAssigner);
-                taskAssignee->assignTask(tasks[taskId]);
+                taskAssignee->assignTask(&tasks[taskId]);
                 break;
             }
             case 6: {

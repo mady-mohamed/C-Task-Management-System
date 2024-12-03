@@ -1,9 +1,9 @@
-#ifndef TASK_H
-#define TASK_H
-
 #include <iostream>
 #include "Manager.h"
 using namespace std;
+
+#ifndef TASK_H
+#define TASK_H
 
 class Employee; // Forward declaration
 
