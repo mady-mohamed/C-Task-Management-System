@@ -13,7 +13,7 @@ class Employee {
         int id;
         string title;
         string name;
-        list<Task> assignedTasks;
+        list<Task*> assignedTasks;
     public:
         Employee() : id(0), title(""), name("") {} // Default constructor
 
@@ -35,18 +35,19 @@ class Employee {
             return name;
         }
 
-        void assignTask(const Task& task){
+        void assignTask(Task* task){
             assignedTasks.push_back(task);
         }
 
-        void deAssignTask(const Task& task){
+        void deAssignTask(Task* task){
             assignedTasks.remove(task);
         }
 
         void displayInfo() const {
             cout << "Employee ID: " << id << ", Name: " << name << ", Title: " << title << endl;
-            for (auto i = assignedTasks.begin(); i != assignedTasks.end(); ++i){
-                i->displayInfo();
+            cout << "Assigned Tasks: " << endl;
+            for (auto i = assignedTasks.begin(); i != assignedTasks.end(); ++i) {
+                (*i)->displayInfo();
             }
         }
 };
