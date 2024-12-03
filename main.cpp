@@ -9,6 +9,7 @@ using namespace std;
 #include "Employee.h"
 #include "Task.h"
 #include "Manager.h"
+#include "TaskManager.h"
 
 // Forward declarations
 class Employee;
@@ -23,7 +24,16 @@ int main() {
     map<int, Task> tasks;
 
     while (running) {
-        cout << "Welcome to the Task Management System! \n1. Add Employee \n2. Show Employees \n3. Assign Manager\n4. Show Managers \n5. Create Task \n6. Update Task Status \n7. View Tasks \n8. Exit \nChoose an option:" << endl;
+        cout << "Welcome to the Task Management System! \n"
+             << "1. Add Employee \n"
+             << "2. Show Employees \n"
+             << "3. Assign Manager\n"
+             << "4. Show Managers \n"
+             << "5. Create Task \n"
+             << "6. Update Task Status \n"
+             << "7. View Tasks \n"
+             << "8. Exit \n"
+             << "Choose an option:" << endl;
         int option, taskOption;
         cin >> option;
 
@@ -35,7 +45,9 @@ int main() {
         int taskPriority = 0;
         int taskAssignerId = 0;
         int taskAssigneeId = 0;
+        Task newTask;
         int managerId;
+        TaskManager taskMng;
         switch (option) {
             case 1: {
                 // Add Employee logic
@@ -96,8 +108,11 @@ int main() {
                 cout << "Enter Task Assignee ID: " << endl;
                 cin >> taskAssigneeId;
                 Employee* taskAssignee = &employees[taskAssigneeId];
-                tasks[taskId] = Task(taskId, taskDescription, taskPriority, taskAssignee, taskAssigner);
-                taskAssignee->assignTask(&tasks[taskId]);
+                newTask = Task(taskId, taskDescription, taskPriority, taskAssignee, taskAssigner);
+                taskMng.addTask(newTask);
+                Task* taskRef = taskMng.getTask(taskId);
+                taskAssignee->assignTask(taskRef);
+                taskMng.getTask(taskId)->printTask();
                 break;
             }
             case 6: {
@@ -111,27 +126,27 @@ int main() {
                     case 1:{
                         cout << "Enter new description: " << endl;
                         cin >> taskDescription;
-                        tasks[taskId].setTaskDescription(taskDescription);
+                        taskMng.getTask(taskId)->setTaskDescription(taskDescription);
                         break;
                     }
                     case 2:{
                         cout << "Enter new priority (1 low, 2 medium, 3 high): " << endl;
                         cin >> taskPriority;
-                        tasks[taskId].setTaskPriority(taskPriority);
+                        taskMng.getTask(taskId)->setTaskPriority(taskPriority);
                         break;
                     }
                     case 3:{
                         cout << "Enter new Assigner Manager ID: " << endl;
                         cin >> taskAssignerId;
                         Manager* taskAssigner = &managers[taskAssignerId];
-                        tasks[taskId].setAssigner(taskAssigner);
+                        taskMng.getTask(taskId)->setAssigner(taskAssigner);
                         break;
                     }
                     case 4:{
                         cout << "Enter new Assigned Employee ID: " << endl;
                         cin >> taskAssignerId;
                         Employee* taskAssignedEmployee = &employees[taskAssignerId];
-                        tasks[taskId].setAssignee(taskAssignedEmployee);
+                        taskMng.getTask(taskId)->setAssignee(taskAssignedEmployee);
                         break;
                     }
                     default:{
@@ -144,6 +159,7 @@ int main() {
             case 7: {
                 // View All Tasks logic
                 cout << "Viewing Tasks..." << endl;
+                taskMng.viewTasks();
                 break;
             }
             case 8: {

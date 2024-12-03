@@ -41,6 +41,30 @@ class Task {
         void setAssignee(Employee* taskAssignee) {
             assignee = taskAssignee;
         }
+
+        int getId() const{
+            return id;
+        }
+
+        string getDescription() const{
+            return description;
+        }
+
+        void printTask() const {
+            cout << "Task ID: " << id << endl;
+            cout << "Description: " << description << endl;
+            cout << "Priority: " << priority << endl;
+            if (assignee) {
+                cout << "Assignee: " << assignee->getEmployeeName() << endl;
+            } else {
+                cout << "Assignee: None" << endl;
+            }
+            if (assigner) {
+                cout << "Assigner: " << assigner->getEmployeeName() << endl;
+            } else {
+                cout << "Assigner: None" << endl;
+            }
+        }
 };
 
 #endif
