@@ -8,6 +8,7 @@ using namespace std;
 #include "Database.h"
 #include "Employee.h"
 #include "Task.h"
+#include "Manager.h"
 
 // Forward declarations
 class Employee;
@@ -143,9 +144,6 @@ int main() {
             case 7: {
                 // View All Tasks logic
                 cout << "Viewing Tasks..." << endl;
-                for (const auto& [key, value] : tasks) {
-                    value.displayInfo();
-                }
                 break;
             }
             case 8: {

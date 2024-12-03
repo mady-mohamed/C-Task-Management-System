@@ -1,11 +1,14 @@
-#include <iostream>
-#include "Manager.h"
-using namespace std;
-
 #ifndef TASK_H
 #define TASK_H
 
-class Employee; // Forward declaration
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+#include "Employee.h"
+class Manager; // Forward declaration of Manager class
+#include "Manager.h"
 
 class Task {
     private:
@@ -37,22 +40,6 @@ class Task {
         }
         void setAssignee(Employee* taskAssignee) {
             assignee = taskAssignee;
-        }
-        void displayInfo() const {
-            cout << "Task ID: " << id << ", Description: " << description << ", Priority: " << priority;
-            if (assignee) {
-                cout << ", Assignee: ";
-                assignee->displayInfo();
-            } else {
-                cout << ", Assignee: None";
-            }
-            if (assigner) {
-                cout << ", Assigner: ";
-                assigner->displayInfo();
-            } else {
-                cout << ", Assigner: None";
-            }
-            cout << endl;
         }
 };
 

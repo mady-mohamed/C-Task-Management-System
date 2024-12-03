@@ -1,7 +1,3 @@
-#include <iostream>
-#include <list>
-using namespace std;
-
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 
@@ -44,9 +40,6 @@ class Employee {
 
         void displayInfo() const {
             cout << "Employee ID: " << id << ", Name: " << name << ", Title: " << title << endl;
-            // for (auto i = assignedTasks.begin(); i != assignedTasks.end(); ++i){
-            //     (*i)->displayInfo();
-            // }
         }
 };
 

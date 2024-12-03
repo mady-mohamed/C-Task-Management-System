@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
-#include "employee.h"
+#include "Employee.h"
+#include "Task.h"  // Include Task.h to get full definition of Task
 using namespace std;
 
 #ifndef MANAGER_H
@@ -26,13 +27,8 @@ class Manager : public Employee {
         }
 
         void displayInfo() const {
-                cout << "Manager Employee ID: " << id << ", Name: " << name << ", Title: " << title << endl;
-                for (auto i = assignerTasks.begin(); i != assignerTasks.end(); ++i){
-                (*i)->displayInfo();
-                }
-            }
-
-    
+            cout << "Manager Employee ID: " << id << ", Name: " << name << ", Title: " << title << endl;
+        }
 };
 
 #endif
